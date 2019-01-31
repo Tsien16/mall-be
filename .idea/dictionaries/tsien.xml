@@ -1,3 +1,15 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="tsien" />
+  <dictionary name="tsien">
+    <words>
+      <w>annotatedmapper</w>
+      <w>ftpuser</w>
+      <w>ibatis</w>
+      <w>malllog</w>
+      <w>mixedmapper</w>
+      <w>pagehelper</w>
+      <w>sqlmap</w>
+      <w>tsien</w>
+      <w>xmlmapper</w>
+    </words>
+  </dictionary>
 </component>
