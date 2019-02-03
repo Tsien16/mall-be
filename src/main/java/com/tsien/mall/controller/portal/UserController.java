@@ -1,9 +1,15 @@
 package com.tsien.mall.controller.portal;
 
+import com.tsien.mall.common.Const;
+import com.tsien.mall.common.ServerResponse;
+import com.tsien.mall.pojo.User;
+import com.tsien.mall.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.print.DocFlavor;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -18,6 +24,13 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user/")
 public class UserController {
 
+    private IUserService iUserService;
+
+    @Autowired
+    public UserController(IUserService iUserService) {
+        this.iUserService = iUserService;
+    }
+
     /**
      * 用户登录
      *
@@ -28,7 +41,22 @@ public class UserController {
      */
 
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
-    public Object login(String username, String password, HttpSession httpSession) {
-        return null;
+    public ServerResponse<User> login(String username, String password, HttpSession session) {
+        ServerResponse<User> response = iUserService.login(username, password);
+        if (response.isSuccess()) {
+            session.setAttribute(Const.CURRENT_USER, response.getData());
+        }
+        return response;
+    }
+
+    @RequestMapping(value = "logout.do", method = RequestMethod.GET)
+    public ServerResponse<String> logout(HttpSession session) {
+        session.removeAttribute(Const.CURRENT_USER);
+        return ServerResponse.createBySuccess();
+    }
+
+
+    public ServerResponse<String> register(User user) {
+
     }
 }

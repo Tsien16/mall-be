@@ -1,5 +1,7 @@
 package com.tsien.mall.service;
 
+import com.tsien.mall.common.ServerResponse;
+import com.tsien.mall.pojo.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,5 +14,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface IUserService {
-    Object login(String username, String password);
+    ServerResponse<User> login(String username, String password);
 }

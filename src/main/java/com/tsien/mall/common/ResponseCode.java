@@ -38,6 +38,4 @@ public enum ResponseCode {
     public String getDesc() {
         return this.desc;
     }
-
-    //Test
 }
