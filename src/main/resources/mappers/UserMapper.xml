@@ -166,6 +166,11 @@
         from mall_user
         where username = #{username}
     </select>
+    <select id="checkEmail" parameterType="string" resultMap="int">
+        select count(1)
+        from mall_user
+        where email = #{email}
+    </select>
     <select id="selectLogin" parameterType="map" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

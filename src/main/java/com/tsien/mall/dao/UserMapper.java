@@ -69,6 +69,14 @@ public interface UserMapper {
     int checkUsername(String username);
 
     /**
+     * 检查邮箱是否存在
+     *
+     * @param email email
+     * @return 根据email查出来的数量
+     */
+    int checkEmail(String email);
+
+    /**
      * 根据用户名密码查询用户
      *
      * @param username 用户名

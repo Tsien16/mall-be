@@ -14,5 +14,29 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface IUserService {
+    /**
+     * 用户登陆
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return 用户
+     */
     ServerResponse<User> login(String username, String password);
+
+    /**
+     * 用户注册
+     *
+     * @param user 用户
+     * @return 注册是否成功的消息
+     */
+    ServerResponse register(User user);
+
+    /**
+     * 检验用户名或者密码是否合法
+     *
+     * @param str  用户名/密码
+     * @param type 类型
+     * @return 对象
+     */
+    ServerResponse<String> checkValid(String str, String type);
 }

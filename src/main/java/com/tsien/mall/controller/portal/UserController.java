@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.print.DocFlavor;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -55,8 +54,13 @@ public class UserController {
         return ServerResponse.createBySuccess();
     }
 
+    @RequestMapping(value = "register.do", method = RequestMethod.POST)
+    public ServerResponse register(User user) {
+        return iUserService.register(user);
+    }
 
-    public ServerResponse<String> register(User user) {
-
+    @RequestMapping(value = "check_valid.do", method = RequestMethod.POST)
+    public ServerResponse<String> checkValid(String str, String type) {
+        return iUserService.checkValid(str, type);
     }
 }
