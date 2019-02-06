@@ -2,12 +2,15 @@ package com.tsien.mall.service.impl;
 
 import com.tsien.mall.common.Const;
 import com.tsien.mall.common.ServerResponse;
+import com.tsien.mall.common.TokenCache;
 import com.tsien.mall.dao.UserMapper;
 import com.tsien.mall.pojo.User;
 import com.tsien.mall.service.IUserService;
 import com.tsien.mall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -87,5 +90,29 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createByErrorMessage("参数值错误");
         }
         return ServerResponse.createBySuccessMessage("校验成功");
+    }
+
+    @Override
+    public ServerResponse selectQuestion(String username) {
+        ServerResponse validResponse = this.checkValid(username, Const.USERNAME);
+        if (validResponse.isSuccess()) {
+            return ServerResponse.createByErrorMessage("用户不存在");
+        }
+        String question = userMapper.selectQuestionByUsername(username);
+        if (StringUtils.isNotBlank(question)) {
+            return ServerResponse.createBySuccess(question);
+        }
+        return ServerResponse.createByErrorMessage("找回密码的问题是空的");
+    }
+
+    @Override
+    public ServerResponse<String> checkAnswer(String username, String question, String answer) {
+        int resultCount = userMapper.checkAnswer(username, question, answer);
+        if (resultCount > 0) {
+            String forgetToken = UUID.randomUUID().toString();
+            TokenCache.setKey("token_" + username, forgetToken);
+            return ServerResponse.createBySuccess(forgetToken);
+        }
+        return ServerResponse.createByErrorMessage("问题答案错误");
     }
 }

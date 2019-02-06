@@ -84,4 +84,24 @@ public interface UserMapper {
      * @return 用户实体
      */
     User selectLogin(@Param("username") String username, @Param("password") String password);
+
+    /**
+     * 根据用户名，查询密码验证问题
+     *
+     * @param username 用户名
+     * @return 问题
+     */
+    String selectQuestionByUsername(String username);
+
+    /**
+     * 验证忘记密码问题的答案
+     *
+     * @param username 用户名
+     * @param question 问题
+     * @param answer   答案
+     * @return 查询到结果的数量
+     */
+    int checkAnswer(@Param("username") String username,
+                    @Param("question") String question,
+                    @Param("answer") String answer);
 }

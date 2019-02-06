@@ -33,9 +33,9 @@ public class UserController {
     /**
      * 用户登录
      *
-     * @param username    用户名
-     * @param password    用户密码
-     * @param httpSession session
+     * @param username 用户名
+     * @param password 用户密码
+     * @param session  session
      * @return Object
      */
 
@@ -62,5 +62,24 @@ public class UserController {
     @RequestMapping(value = "check_valid.do", method = RequestMethod.POST)
     public ServerResponse<String> checkValid(String str, String type) {
         return iUserService.checkValid(str, type);
+    }
+
+    @RequestMapping(value = "get_user_info.do", method = RequestMethod.GET)
+    public ServerResponse<User> getUserInfo(HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user != null) {
+            return ServerResponse.createBySuccess(user);
+        }
+        return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户的信息");
+    }
+
+    @RequestMapping(value = "forget_get_question.do", method = RequestMethod.GET)
+    public ServerResponse forgetGetQuestion(String username) {
+        return iUserService.selectQuestion(username);
+    }
+
+    @RequestMapping(value = "forget_check_answer.do", method = RequestMethod.GET)
+    public ServerResponse<String> forgetCheckAnswer(String username, String question, String answer) {
+        return iUserService.checkAnswer(username, question, answer);
     }
 }

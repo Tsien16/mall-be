@@ -39,4 +39,22 @@ public interface IUserService {
      * @return 对象
      */
     ServerResponse<String> checkValid(String str, String type);
+
+    /**
+     * 根据用户名查找问题
+     *
+     * @param username 用户名
+     * @return ServerResponse
+     */
+    ServerResponse selectQuestion(String username);
+
+    /**
+     * 验证问题答案
+     *
+     * @param username 用户名
+     * @param question 问题
+     * @param answer   答案
+     * @return 消息
+     */
+    ServerResponse<String> checkAnswer(String username, String question, String answer);
 }

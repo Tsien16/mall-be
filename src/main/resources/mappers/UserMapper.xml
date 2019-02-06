@@ -176,4 +176,16 @@
         <include refid="Base_Column_List"/>
         from mall_user where username = #{username} and password = #{password}
     </select>
+    <select id="selectQuestionByUsername" parameterType="string" resultMap="string">
+        select question
+        from mall_user
+        where username = #{username}
+    </select>
+    <select id="checkAnswer" parameterType="map" resultMap="int">
+        select count(1)
+        from mall_user
+        where username = #{username}
+          and question = #{question}
+          and answer = #{answer}
+    </select>
 </mapper>
