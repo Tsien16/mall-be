@@ -24,8 +24,7 @@
 hs_err_pid*
 
 .gitignore
-.idea/workspace.xml
+.idea
 src/test/
 target/
-.idea/dataSources.local.xml
-.idea/dataSources/
+.settings
