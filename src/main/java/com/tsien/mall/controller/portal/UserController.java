@@ -23,12 +23,13 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user/")
 public class UserController {
 
-    private IUserService iUserService;
+    private final IUserService iUserService;
 
     @Autowired
     public UserController(IUserService iUserService) {
         this.iUserService = iUserService;
     }
+
 
     /**
      * 用户登录

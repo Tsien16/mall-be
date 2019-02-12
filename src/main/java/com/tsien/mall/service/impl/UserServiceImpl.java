@@ -9,6 +9,7 @@ import com.tsien.mall.service.IUserService;
 import com.tsien.mall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ import java.util.UUID;
  * @date 2019/1/31 0031 19:43
  */
 
+@Service("iUserService")
 public class UserServiceImpl implements IUserService {
 
     private UserMapper userMapper;
@@ -28,6 +30,7 @@ public class UserServiceImpl implements IUserService {
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
+
 
     @Override
     public ServerResponse<User> login(String username, String password) {

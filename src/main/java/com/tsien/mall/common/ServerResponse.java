@@ -1,7 +1,7 @@
 package com.tsien.mall.common;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 
@@ -11,11 +11,11 @@ import java.io.Serializable;
  * @author tsien
  * @version 1.0.0
  * @date 2019/1/31 0031 19:44
- * 注解JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)，保证序列化Json的时候，如果是null对象，key也会消失
+ * 注解@JsonInclude(JsonInclude.Include.NON_NULL)，保证序列化Json的时候，如果是null对象，key也会消失
  * 注解JsonIgnore，使之不在序列化结果当中
  */
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ServerResponse<T> implements Serializable {
     private int status;
     private String msg;

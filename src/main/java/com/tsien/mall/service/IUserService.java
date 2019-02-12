@@ -2,7 +2,6 @@ package com.tsien.mall.service;
 
 import com.tsien.mall.common.ServerResponse;
 import com.tsien.mall.pojo.User;
-import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @date 2019/1/31 0031 19:41
  */
 
-@Service
+
 public interface IUserService {
     /**
      * 用户登陆
