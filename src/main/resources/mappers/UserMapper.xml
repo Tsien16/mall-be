@@ -205,7 +205,7 @@
     <select id="checkEmailByUserId" parameterType="map" resultType="int">
         select count(1)
         from mall_user
-        where username = #{username}
+        where email = #{email}
           and id != #{userId}
     </select>
 </mapper>

@@ -177,11 +177,10 @@ public class UserServiceImpl implements IUserService {
         updateUser.setAnswer(user.getAnswer());
 
         int updateCount = userMapper.updateByPrimaryKeySelective(updateUser);
-
         if (updateCount > 0) {
-            return ServerResponse.createBySuccess("更新跟人信息成功", updateUser);
+            return ServerResponse.createBySuccess("更新个人信息成功", updateUser);
         }
-        return ServerResponse.createByErrorMessage("更新个人用户信息失败");
+        return ServerResponse.createByErrorMessage("更新个人信息失败");
     }
 
     @Override
