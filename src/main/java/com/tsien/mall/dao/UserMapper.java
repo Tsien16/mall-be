@@ -104,4 +104,33 @@ public interface UserMapper {
     int checkAnswer(@Param("username") String username,
                     @Param("question") String question,
                     @Param("answer") String answer);
+
+
+    /**
+     * 更新密码
+     *
+     * @param username    用户名
+     * @param passwordNew 新密码
+     * @return 更新数据的行数
+     */
+    int updatePasswordByUsername(@Param("username") String username, @Param("passwordNew") String passwordNew);
+
+    /**
+     * 检查密码
+     *
+     * @param password 密码
+     * @param userId   用户ID
+     * @return 结果行数
+     */
+    int checkPassword(@Param("password") String password, @Param("userId") Integer userId);
+
+    /**
+     * 根据用户名查询邮箱
+     *
+     * @param email  邮箱
+     * @param userId 用户ID
+     * @return 符合条件的数据条数
+     */
+    int checkEmailByUserId(@Param("email") String email, @Param("userId") Integer userId);
+
 }
