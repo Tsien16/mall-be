@@ -92,4 +92,12 @@ public interface IUserService {
      * @return 用户实体
      */
     ServerResponse<User> getInformation(Integer userId);
+
+    /**
+     * 检查用户是否是管理员
+     *
+     * @param user 用户实体
+     * @return 消息
+     */
+    ServerResponse checkAdminRole(User user);
 }

@@ -2,6 +2,8 @@ package com.tsien.mall.dao;
 
 import com.tsien.mall.pojo.Category;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -22,4 +24,6 @@ public interface CategoryMapper {
     int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
+
+    List<Category> selectCategoryChildrenByParentId(Integer parentId);
 }
