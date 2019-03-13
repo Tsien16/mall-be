@@ -3,12 +3,14 @@
     <words>
       <w>annotatedmapper</w>
       <w>charsetname</w>
+      <w>classpathentry</w>
       <w>encodeutf</w>
       <w>ftpuser</w>
       <w>ibatis</w>
       <w>malllog</w>
       <w>mixedmapper</w>
       <w>pagehelper</w>
+      <w>pomderived</w>
       <w>sqlmap</w>
       <w>tsien</w>
       <w>xmlmapper</w>

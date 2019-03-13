@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController("/manage/user")
 public class UserManagerController {
+
     private final IUserService iUserService;
 
     @Autowired
