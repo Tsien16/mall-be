@@ -12,8 +12,8 @@
             <arg column="current_unit_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
             <arg column="quantity" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="total_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">

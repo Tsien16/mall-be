@@ -1,6 +1,6 @@
 package com.tsien.mall.pojo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 
@@ -23,11 +23,14 @@ public class Category {
 
     private Integer sortOrder;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    public Category(Integer id, Integer parentId, String name, Boolean status, Integer sortOrder, Date createTime, Date updateTime) {
+    public Category() {
+    }
+
+    public Category(Integer id, Integer parentId, String name, Boolean status, Integer sortOrder, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
@@ -35,10 +38,6 @@ public class Category {
         this.sortOrder = sortOrder;
         this.createTime = createTime;
         this.updateTime = updateTime;
-    }
-
-    public Category() {
-        super();
     }
 
     public Integer getId() {
@@ -62,7 +61,7 @@ public class Category {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Boolean getStatus() {
@@ -81,19 +80,19 @@ public class Category {
         this.sortOrder = sortOrder;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -106,11 +105,17 @@ public class Category {
             return false;
         }
         Category category = (Category) o;
-        return Objects.equals(id, category.id);
+        return Objects.equals(id, category.id) &&
+                Objects.equals(parentId, category.parentId) &&
+                Objects.equals(name, category.name) &&
+                Objects.equals(status, category.status) &&
+                Objects.equals(sortOrder, category.sortOrder) &&
+                Objects.equals(createTime, category.createTime) &&
+                Objects.equals(updateTime, category.updateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, parentId, name, status, sortOrder, createTime, updateTime);
     }
 }

@@ -1,17 +1,17 @@
-package com.tsien.mall.pojo;
+package com.tsien.mall.vo;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @author tsien
  * @version 1.0.0
- * @date 2019/1/31 0031 18:12
+ * @date 2019/3/16 0016 19:36
  */
 
-public class Product {
+public class ProductDetailVo {
+
     private Integer id;
 
     private Integer categoryId;
@@ -32,27 +32,13 @@ public class Product {
 
     private Integer status;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
-    private LocalDateTime updateTime;
+    private String updateTime;
 
-    public Product() {
-    }
+    private String imageHost;
 
-    public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, LocalDateTime createTime, LocalDateTime updateTime) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.name = name;
-        this.subtitle = subtitle;
-        this.mainImage = mainImage;
-        this.subImages = subImages;
-        this.detail = detail;
-        this.price = price;
-        this.stock = stock;
-        this.status = status;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
+    private Integer parentCategoryId;
 
     public Integer getId() {
         return id;
@@ -134,19 +120,35 @@ public class Product {
         this.status = status;
     }
 
-    public LocalDateTime getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public LocalDateTime getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(LocalDateTime updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getImageHost() {
+        return imageHost;
+    }
+
+    public void setImageHost(String imageHost) {
+        this.imageHost = imageHost;
+    }
+
+    public Integer getParentCategoryId() {
+        return parentCategoryId;
+    }
+
+    public void setParentCategoryId(Integer parentCategoryId) {
+        this.parentCategoryId = parentCategoryId;
     }
 }

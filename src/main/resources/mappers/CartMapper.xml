@@ -8,8 +8,8 @@
             <arg column="product_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="quantity" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="checked" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">

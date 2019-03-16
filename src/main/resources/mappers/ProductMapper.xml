@@ -13,8 +13,8 @@
             <arg column="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
             <arg column="stock" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
@@ -185,4 +185,10 @@
             update_time = now()
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from mall_product
+        order by id asc
+    </select>
 </mapper>

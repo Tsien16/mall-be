@@ -1,6 +1,6 @@
 package com.tsien.mall.pojo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,11 +31,14 @@ public class Shipping {
 
     private String receiverZip;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile, String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress, String receiverZip, Date createTime, Date updateTime) {
+    public Shipping() {
+    }
+
+    public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile, String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress, String receiverZip, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.userId = userId;
         this.receiverName = receiverName;
@@ -48,10 +51,6 @@ public class Shipping {
         this.receiverZip = receiverZip;
         this.createTime = createTime;
         this.updateTime = updateTime;
-    }
-
-    public Shipping() {
-        super();
     }
 
     public Integer getId() {
@@ -75,7 +74,7 @@ public class Shipping {
     }
 
     public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName == null ? null : receiverName.trim();
+        this.receiverName = receiverName;
     }
 
     public String getReceiverPhone() {
@@ -83,7 +82,7 @@ public class Shipping {
     }
 
     public void setReceiverPhone(String receiverPhone) {
-        this.receiverPhone = receiverPhone == null ? null : receiverPhone.trim();
+        this.receiverPhone = receiverPhone;
     }
 
     public String getReceiverMobile() {
@@ -91,7 +90,7 @@ public class Shipping {
     }
 
     public void setReceiverMobile(String receiverMobile) {
-        this.receiverMobile = receiverMobile == null ? null : receiverMobile.trim();
+        this.receiverMobile = receiverMobile;
     }
 
     public String getReceiverProvince() {
@@ -99,7 +98,7 @@ public class Shipping {
     }
 
     public void setReceiverProvince(String receiverProvince) {
-        this.receiverProvince = receiverProvince == null ? null : receiverProvince.trim();
+        this.receiverProvince = receiverProvince;
     }
 
     public String getReceiverCity() {
@@ -107,7 +106,7 @@ public class Shipping {
     }
 
     public void setReceiverCity(String receiverCity) {
-        this.receiverCity = receiverCity == null ? null : receiverCity.trim();
+        this.receiverCity = receiverCity;
     }
 
     public String getReceiverDistrict() {
@@ -115,7 +114,7 @@ public class Shipping {
     }
 
     public void setReceiverDistrict(String receiverDistrict) {
-        this.receiverDistrict = receiverDistrict == null ? null : receiverDistrict.trim();
+        this.receiverDistrict = receiverDistrict;
     }
 
     public String getReceiverAddress() {
@@ -123,7 +122,7 @@ public class Shipping {
     }
 
     public void setReceiverAddress(String receiverAddress) {
-        this.receiverAddress = receiverAddress == null ? null : receiverAddress.trim();
+        this.receiverAddress = receiverAddress;
     }
 
     public String getReceiverZip() {
@@ -131,22 +130,22 @@ public class Shipping {
     }
 
     public void setReceiverZip(String receiverZip) {
-        this.receiverZip = receiverZip == null ? null : receiverZip.trim();
+        this.receiverZip = receiverZip;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 }

@@ -2,6 +2,8 @@ package com.tsien.mall.dao;
 
 import com.tsien.mall.pojo.Product;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -22,4 +24,6 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    List<Product> selectList();
 }

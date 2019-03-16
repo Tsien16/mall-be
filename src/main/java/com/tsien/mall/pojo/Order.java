@@ -1,7 +1,7 @@
 package com.tsien.mall.pojo;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,19 +28,22 @@ public class Order {
 
     private Integer status;
 
-    private Date paymentTime;
+    private LocalDateTime paymentTime;
 
-    private Date sendTime;
+    private LocalDateTime sendTime;
 
-    private Date endTime;
+    private LocalDateTime endTime;
 
-    private Date closeTime;
+    private LocalDateTime closeTime;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    public Order(Integer id, Long orderNo, Integer userId, Integer shippingId, BigDecimal payment, Integer paymentType, Integer postage, Integer status, Date paymentTime, Date sendTime, Date endTime, Date closeTime, Date createTime, Date updateTime) {
+    public Order() {
+    }
+
+    public Order(Integer id, Long orderNo, Integer userId, Integer shippingId, BigDecimal payment, Integer paymentType, Integer postage, Integer status, LocalDateTime paymentTime, LocalDateTime sendTime, LocalDateTime endTime, LocalDateTime closeTime, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.orderNo = orderNo;
         this.userId = userId;
@@ -55,10 +58,6 @@ public class Order {
         this.closeTime = closeTime;
         this.createTime = createTime;
         this.updateTime = updateTime;
-    }
-
-    public Order() {
-        super();
     }
 
     public Integer getId() {
@@ -125,51 +124,51 @@ public class Order {
         this.status = status;
     }
 
-    public Date getPaymentTime() {
+    public LocalDateTime getPaymentTime() {
         return paymentTime;
     }
 
-    public void setPaymentTime(Date paymentTime) {
+    public void setPaymentTime(LocalDateTime paymentTime) {
         this.paymentTime = paymentTime;
     }
 
-    public Date getSendTime() {
+    public LocalDateTime getSendTime() {
         return sendTime;
     }
 
-    public void setSendTime(Date sendTime) {
+    public void setSendTime(LocalDateTime sendTime) {
         this.sendTime = sendTime;
     }
 
-    public Date getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
-    public Date getCloseTime() {
+    public LocalDateTime getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(Date closeTime) {
+    public void setCloseTime(LocalDateTime closeTime) {
         this.closeTime = closeTime;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 }

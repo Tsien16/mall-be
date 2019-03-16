@@ -11,12 +11,12 @@
             <arg column="payment_type" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="postage" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="payment_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="send_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="close_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="payment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="send_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="end_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="close_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <arg column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">

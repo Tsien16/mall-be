@@ -1,7 +1,7 @@
 package com.tsien.mall.pojo;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,11 +30,14 @@ public class OrderItem {
 
     private BigDecimal totalPrice;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    public OrderItem(Integer id, Integer userId, Long orderNo, Integer productId, String productName, String productImage, BigDecimal currentUnitPrice, Integer quantity, BigDecimal totalPrice, Date createTime, Date updateTime) {
+    public OrderItem() {
+    }
+
+    public OrderItem(Integer id, Integer userId, Long orderNo, Integer productId, String productName, String productImage, BigDecimal currentUnitPrice, Integer quantity, BigDecimal totalPrice, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.userId = userId;
         this.orderNo = orderNo;
@@ -46,10 +49,6 @@ public class OrderItem {
         this.totalPrice = totalPrice;
         this.createTime = createTime;
         this.updateTime = updateTime;
-    }
-
-    public OrderItem() {
-        super();
     }
 
     public Integer getId() {
@@ -89,7 +88,7 @@ public class OrderItem {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
+        this.productName = productName;
     }
 
     public String getProductImage() {
@@ -97,7 +96,7 @@ public class OrderItem {
     }
 
     public void setProductImage(String productImage) {
-        this.productImage = productImage == null ? null : productImage.trim();
+        this.productImage = productImage;
     }
 
     public BigDecimal getCurrentUnitPrice() {
@@ -124,19 +123,19 @@ public class OrderItem {
         this.totalPrice = totalPrice;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 }

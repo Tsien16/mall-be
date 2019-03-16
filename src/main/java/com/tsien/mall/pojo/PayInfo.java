@@ -1,6 +1,6 @@
 package com.tsien.mall.pojo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,11 +23,14 @@ public class PayInfo {
 
     private String platformStatus;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    public PayInfo(Integer id, Integer userId, Long orderNo, Integer payPlatform, String platformNumber, String platformStatus, Date createTime, Date updateTime) {
+    public PayInfo() {
+    }
+
+    public PayInfo(Integer id, Integer userId, Long orderNo, Integer payPlatform, String platformNumber, String platformStatus, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.userId = userId;
         this.orderNo = orderNo;
@@ -36,10 +39,6 @@ public class PayInfo {
         this.platformStatus = platformStatus;
         this.createTime = createTime;
         this.updateTime = updateTime;
-    }
-
-    public PayInfo() {
-        super();
     }
 
     public Integer getId() {
@@ -79,7 +78,7 @@ public class PayInfo {
     }
 
     public void setPlatformNumber(String platformNumber) {
-        this.platformNumber = platformNumber == null ? null : platformNumber.trim();
+        this.platformNumber = platformNumber;
     }
 
     public String getPlatformStatus() {
@@ -87,22 +86,22 @@ public class PayInfo {
     }
 
     public void setPlatformStatus(String platformStatus) {
-        this.platformStatus = platformStatus == null ? null : platformStatus.trim();
+        this.platformStatus = platformStatus;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 }
