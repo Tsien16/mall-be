@@ -123,6 +123,7 @@ public class ProductServiceImpl implements IProductService {
 
         return productDetailVo;
     }
+
     @Override
     public ServerResponse<PageInfo> getProductList(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -151,4 +152,22 @@ public class ProductServiceImpl implements IProductService {
         productListVo.setStatus(product.getStatus());
         return productListVo;
     }
+
+    @Override
+    public ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        if (StringUtils.isNotBlank(productName)) {
+            productName = "%" + productName + "%";
+        }
+        List<Product> productList = productMapper.selectByNameAndProductId(productName, productId);
+        List<ProductListVo> productListVoList = new ArrayList<>();
+        for (Product productItem : productList) {
+            ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
+        }
+        PageInfo pageInfo = new PageInfo<>(productListVoList);
+        return ServerResponse.createBySuccess(pageInfo);
+    }
+
+
 }

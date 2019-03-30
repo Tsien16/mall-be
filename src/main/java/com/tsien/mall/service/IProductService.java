@@ -47,4 +47,13 @@ public interface IProductService {
      * @return 分页信息
      */
     ServerResponse<PageInfo> getProductList(int pageNum, int pageSize);
+
+    /**
+     * @param productName 产品名称
+     * @param productId   产品Id
+     * @param pageNum     页数
+     * @param pageSize    每页的数量
+     * @return 分页信息
+     */
+    ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize);
 }

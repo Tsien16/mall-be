@@ -35,9 +35,10 @@ public class TokenCache {
 
     public static String getKey(String key) {
         String value = null;
+        String nullValue = "null";
         try {
             value = localCache.get(key);
-            if ("null".equals(value)) {
+            if (nullValue.equals(value)) {
                 return null;
             }
             return value;
@@ -46,6 +47,4 @@ public class TokenCache {
         }
         return null;
     }
-
-    ;
 }
