@@ -56,4 +56,24 @@ public interface IProductService {
      * @return 分页信息
      */
     ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize);
+
+    /**
+     * 获取产品详情
+     *
+     * @param productId 产品ID
+     * @return 产品详情
+     */
+    ServerResponse<ProductDetailVo> getProductDetail(Integer productId);
+
+    /**
+     * 根据关键字和产品类别搜索产品
+     *
+     * @param keyword    关键字
+     * @param categoryId 产品类别ID
+     * @param pageNum    页数
+     * @param pageSize   每页数量
+     * @param orderBy    排序
+     * @return PageInfo
+     */
+    ServerResponse<PageInfo> getProductByKeywordCategory(String keyword, Integer categoryId, int pageNum, int pageSize, String orderBy);
 }

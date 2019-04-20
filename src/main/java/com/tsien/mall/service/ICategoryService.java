@@ -47,5 +47,5 @@ public interface ICategoryService {
      * @param categoryId 品类ID
      * @return ID集合
      */
-    ServerResponse selectCategoryAndDeepChildrenCategoryById(Integer categoryId);
+    ServerResponse<List<Integer>> selectCategoryAndDeepChildrenCategoryById(Integer categoryId);
 }
