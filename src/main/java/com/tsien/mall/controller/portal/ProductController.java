@@ -1,7 +1,6 @@
 package com.tsien.mall.controller.portal;
 
 import com.tsien.mall.common.ServerResponse;
-import com.tsien.mall.pojo.Product;
 import com.tsien.mall.service.IProductService;
 import com.tsien.mall.vo.ProductDetailVo;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ public class ProductController {
     }
 
 
-    public ServerResponse<ProductDetailVo> detail(Integer productId){
-
+    public ServerResponse<ProductDetailVo> detail(Integer productId) {
+        return null;
     }
 }

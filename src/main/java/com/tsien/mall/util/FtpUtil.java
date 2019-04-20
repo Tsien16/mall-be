@@ -17,25 +17,32 @@ import java.util.List;
  * @date 2019/3/31 0031 0:23
  */
 
-public class FTPUtil {
+public class FtpUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(FTPUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(FtpUtil.class);
 
     private static String ftpIp = PropertiesUtil.getProperty("ftp.server.ip");
     private static String ftpUser = PropertiesUtil.getProperty("ftp.user");
     private static String ftpPass = PropertiesUtil.getProperty("ftp.pass");
+    private static String ftpDir = PropertiesUtil.getProperty("ftp.dir");
 
-    public FTPUtil(String ip, int port, String user, String pwd) {
+    private FtpUtil(String ip, int port, String user, String pwd) {
         this.ip = ip;
         this.port = port;
         this.user = user;
         this.pwd = pwd;
     }
 
+    /**
+     * 上传文件
+     *
+     * @param fileList 文件列表
+     * @throws IOException IO异常
+     */
     public static boolean uploadFile(List<File> fileList) throws IOException {
-        FTPUtil ftpUtil = new FTPUtil(ftpIp, 21, ftpUser, ftpPass);
+        FtpUtil ftpUtil = new FtpUtil(ftpIp, 21, ftpUser, ftpPass);
         logger.info("开始连接FTP服务器");
-        boolean result = ftpUtil.uploadFile("img", fileList);
+        boolean result = ftpUtil.uploadFile(ftpDir, fileList);
 
         logger.info("开始连接FTP服务器，结束上传，上传结果：{}", result);
 
@@ -45,7 +52,7 @@ public class FTPUtil {
     private boolean uploadFile(String remotePath, List<File> fileList) throws IOException {
         boolean uploaded = true;
         FileInputStream fileInputStream = null;
-        if (connectServer(this.ip, this.port, this.user, this.pwd)) {
+        if (connectServer(this.ip, this.user, this.pwd)) {
             try {
                 ftpClient.changeWorkingDirectory(remotePath);
                 ftpClient.setBufferSize(1024);
@@ -70,7 +77,7 @@ public class FTPUtil {
 
     }
 
-    private boolean connectServer(String ip, int port, String user, String pwd) {
+    private boolean connectServer(String ip, String user, String pwd) {
 
         boolean isSuccess = false;
         ftpClient = new FTPClient();

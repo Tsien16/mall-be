@@ -2,7 +2,7 @@ package com.tsien.mall.service.impl;
 
 import com.google.common.collect.Lists;
 import com.tsien.mall.service.IFileService;
-import com.tsien.mall.util.FTPUtil;
+import com.tsien.mall.util.FtpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -26,9 +26,9 @@ public class FileServiceImpl implements IFileService {
 
     @Override
     public String upload(MultipartFile file, String path) {
-        // 文件名
+        // 获取上传文件的原始文件名
         String fileName = file.getOriginalFilename();
-        // 扩展名
+        // 获取扩展名
         String fileExtensionName = fileName != null ? fileName.substring(fileName.lastIndexOf(".") + 1) : null;
         String uploadFileName = UUID.randomUUID().toString() + "." + fileExtensionName;
         logger.info("开始上传文件，上传文件的文件名：{}，上传的路径：{}，新文件名：{}", fileName, path, uploadFileName);
@@ -37,10 +37,11 @@ public class FileServiceImpl implements IFileService {
             fileDir.setWritable(true);
             fileDir.mkdirs();
         }
+
         File targetFile = new File(path, uploadFileName);
         try {
             file.transferTo(targetFile);
-            FTPUtil.uploadFile(Lists.newArrayList(targetFile));
+            FtpUtil.uploadFile(Lists.newArrayList(targetFile));
             targetFile.delete();
         } catch (IOException e) {
             logger.error("上传文件异常", e);
