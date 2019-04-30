@@ -92,9 +92,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.mybatis</groupId>-->
-            <!--<artifactId>mybatis-typehandlers-jsr310</artifactId>-->
-            <!--<version>1.0.2</version>-->
+        <!--<groupId>org.mybatis</groupId>-->
+        <!--<artifactId>mybatis-typehandlers-jsr310</artifactId>-->
+        <!--<version>1.0.2</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -201,6 +201,12 @@
         </dependency>
 
         <!-- aliPay -->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>3.7.26.ALL</version>
+        </dependency>
+
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>

@@ -4,10 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.tsien.mall.common.ServerResponse;
 import com.tsien.mall.service.IProductService;
 import com.tsien.mall.vo.ProductDetailVo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/product/")
+@CrossOrigin
 public class ProductController {
 
     private final IProductService iProductService;
