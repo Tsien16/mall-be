@@ -14,16 +14,53 @@ import java.util.List;
  */
 
 public interface ShippingMapper {
+
+    /**
+     * 根据主键删除
+     *
+     * @param id 主键
+     * @return 删除的条数
+     */
     int deleteByPrimaryKey(Integer id);
 
+    /**
+     * 插入数据
+     *
+     * @param record 实体
+     * @return 插入的数据量
+     */
     int insert(Shipping record);
 
+    /**
+     * 有选择的插入数据
+     *
+     * @param record 实体
+     * @return 插入的数据量
+     */
     int insertSelective(Shipping record);
 
+    /**
+     * 根据主键查询
+     *
+     * @param id 主键
+     * @return 实体
+     */
     Shipping selectByPrimaryKey(Integer id);
 
+    /**
+     * 有选择的更新
+     *
+     * @param record 实体
+     * @return 更新的条数
+     */
     int updateByPrimaryKeySelective(Shipping record);
 
+    /**
+     * 根据主键更新
+     *
+     * @param record 实体
+     * @return 更新的条数
+     */
     int updateByPrimaryKey(Shipping record);
 
     /**

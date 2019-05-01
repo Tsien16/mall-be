@@ -249,6 +249,8 @@
             <version>2.1-rc3</version>
         </dependency>
 
+        <!-- aliPay over -->
+
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>

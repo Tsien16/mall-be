@@ -14,6 +14,7 @@ import java.util.List;
  */
 
 public interface ProductMapper {
+
     /**
      * 根据主键删除
      *
@@ -30,14 +31,43 @@ public interface ProductMapper {
      */
     int insert(Product record);
 
+    /**
+     * 有选择的插入数据
+     *
+     * @param record 实体
+     * @return 插入的数据量
+     */
     int insertSelective(Product record);
 
+    /**
+     * 根据主键查询
+     *
+     * @param id 主键
+     * @return 实体
+     */
     Product selectByPrimaryKey(Integer id);
 
+    /**
+     * 有选择的更新
+     *
+     * @param record 实体
+     * @return 更新的条数
+     */
     int updateByPrimaryKeySelective(Product record);
 
+    /**
+     * 根据主键更新
+     *
+     * @param record 实体
+     * @return 更新的条数
+     */
     int updateByPrimaryKey(Product record);
 
+    /**
+     * 查询全量产品
+     *
+     * @return productList
+     */
     List<Product> selectList();
 
     /**
