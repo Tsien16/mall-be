@@ -1,10 +1,14 @@
 package com.tsien.mall.service.impl;
 
+import com.alipay.api.AlipayResponse;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
+import com.alipay.demo.trade.config.Configs;
 import com.alipay.demo.trade.model.ExtendParams;
 import com.alipay.demo.trade.model.GoodsDetail;
 import com.alipay.demo.trade.model.builder.AlipayTradePrecreateRequestBuilder;
 import com.alipay.demo.trade.model.result.AlipayF2FPrecreateResult;
+import com.alipay.demo.trade.service.AlipayTradeService;
+import com.alipay.demo.trade.service.impl.AlipayTradeServiceImpl;
 import com.google.common.collect.Maps;
 import com.tsien.mall.common.ServerResponse;
 import com.tsien.mall.dao.OrderItemMapper;
@@ -14,6 +18,7 @@ import com.tsien.mall.pojo.OrderItem;
 import com.tsien.mall.service.IOrderService;
 import com.tsien.mall.util.BigDecimalUtil;
 import com.tsien.mall.util.PropertiesUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -32,6 +37,13 @@ import java.util.Map;
 
 @Service("iOrderService")
 public class OrderServiceImpl implements IOrderService {
+
+    private static AlipayTradeService tradeService;
+
+    static {
+        Configs.init("alipay.properties");
+        tradeService = new AlipayTradeServiceImpl.ClientBuilder().build();
+    }
 
     private Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
@@ -113,7 +125,7 @@ public class OrderServiceImpl implements IOrderService {
         AlipayF2FPrecreateResult result = tradeService.tradePrecreate(builder);
         switch (result.getTradeStatus()) {
             case SUCCESS:
-                log.info("支付宝预下单成功: )");
+                logger.info("支付宝预下单成功: )");
 
                 AlipayTradePrecreateResponse response = result.getResponse();
                 dumpResponse(response);
@@ -121,24 +133,34 @@ public class OrderServiceImpl implements IOrderService {
                 // 需要修改为运行机器上的路径
                 String filePath = String.format("/Users/sudo/Desktop/qr-%s.png",
                         response.getOutTradeNo());
-                log.info("filePath:" + filePath);
+                logger.info("filePath:" + filePath);
                 //                ZxingUtils.getQRCodeImge(response.getQrCode(), 256, filePath);
                 break;
 
             case FAILED:
-                log.error("支付宝预下单失败!!!");
+                logger.error("支付宝预下单失败!!!");
                 break;
 
             case UNKNOWN:
-                log.error("系统异常，预下单状态未知!!!");
+                logger.error("系统异常，预下单状态未知!!!");
                 break;
 
             default:
-                log.error("不支持的交易状态，交易返回异常!!!");
+                logger.error("不支持的交易状态，交易返回异常!!!");
                 break;
         }
-
-
+        return null;
     }
 
+    private void dumpResponse(AlipayResponse response) {
+        if (response != null) {
+            logger.info("code:" + response.getCode() + ", msg:" + response.getMsg());
+            if (StringUtils.isNotEmpty(response.getSubCode())) {
+                logger.info(String.format("subCode:%s, subMsg:%s", response.getSubCode(),
+                        response.getSubMsg()));
+            }
+            logger.info("body:" + response.getBody());
+        }
+
+    }
 }
