@@ -134,7 +134,6 @@ public class OrderServiceImpl implements IOrderService {
                 String filePath = String.format("/Users/sudo/Desktop/qr-%s.png",
                         response.getOutTradeNo());
                 logger.info("filePath:" + filePath);
-                //                ZxingUtils.getQRCodeImge(response.getQrCode(), 256, filePath);
                 break;
 
             case FAILED:
