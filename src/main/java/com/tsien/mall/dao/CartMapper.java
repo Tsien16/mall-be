@@ -118,4 +118,12 @@ public interface CartMapper {
      */
     int selectCartProductCount(Integer userId);
 
+    /**
+     * 根据用户查询购物车
+     *
+     * @param userId 用户ID
+     * @return cartList
+     */
+    List<Cart> selectCheckedCartByUserId(Integer userId);
+
 }

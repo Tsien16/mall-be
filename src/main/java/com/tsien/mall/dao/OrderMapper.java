@@ -3,6 +3,8 @@ package com.tsien.mall.dao;
 import com.tsien.mall.pojo.Order;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -77,4 +79,22 @@ public interface OrderMapper {
      * @return 订单
      */
     Order selectByOrderNo(Long orderNo);
+
+    /**
+     * 通过用户ID查询订单
+     *
+     * @param userId 用户ID
+     * @return orderList
+     */
+    List<Order> selectByUserId(Integer userId);
+
+
+    /**
+     * 查询所有订单
+     *
+     * @return orderList
+     */
+    List<Order> selectAllOrder();
+
+
 }
